@@ -1,0 +1,135 @@
+/* Series */
+.tc-series {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  justify-content: center;
+}
+
+.mindset{
+  background-image: url(https://alicantefootballacademy.com/wp-content/uploads/elementor/thumbs/How-to-join-a-football-club-academy-ql73oym09jijvhg9b2vt3dx9dqhqcpak8aitgxp7bs.jpg);
+  background-size: cover;
+}
+.setPieces{
+  background-image: url(https://alicantefootballacademy.com/wp-content/uploads/elementor/thumbs/how-to-get-scouted-in-football-europe-1-outgs8hxr0zo0rjmek6waqo49p797qgybbynmmu1qw.jpg);
+  background-size: cover;
+}
+.tactical{
+  background-image: url(https://alicantefootballacademy.com/wp-content/uploads/2021/05/how-to-train-football-soccer-drills-exercises.jpg);
+  background-size: cover;
+}
+.fitness{
+  background-image: url(https://alicantefootballacademy.com/wp-content/uploads/2021/06/how-to-train-for-speed-agility-football-drills.jpg.webp);
+  background-size: cover;
+}
+.defending{
+  background-image: url(https://alicantefootballacademy.com/wp-content/uploads/2021/08/how-to-defend-football-defending-training-drills-exercises.jpg.webp);
+  background-size: cover;
+}
+.goalkeeping{
+  background-image: url(https://alicantefootballacademy.com/wp-content/uploads/2021/11/individual-football-training-drills-soccer.jpg.webp);
+  background-size: cover;
+}
+.passing{
+  background-image: url(https://alicantefootballacademy.com/wp-content/uploads/2022/11/the-best-possession-football-exercises-and-drills.webp);
+  background-size: cover;
+}
+.shooting{
+  background-image: url(https://alicantefootballacademy.com/wp-content/uploads/2022/01/how-to-improve-sfootball-shooting-finishing-with-drills-and-exercises.jpg.webp);
+  background-size: cover;
+}
+.dribbling{
+  background-image: url(https://alicantefootballacademy.com/wp-content/uploads/2022/02/how-to-become-a-footballer-1.jpg.webp);
+  background-size: cover;
+}
+
+/* Episode */
+.tc-episode {
+  display: flex;
+  justify-content: space-around;
+  flex-direction: row-reverse;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 20px;
+  border-radius: 5px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+  position: relative;
+}
+
+.tc-episode:nth-child(3n) {
+  margin-right: 0;
+}
+
+.tc-episode:hover {
+  transform: translateY(-5px);
+}
+
+.tc-episode-thumbnail {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.videoTitle{
+  width: 500px;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.tc-episode-title {
+  padding: 10px;
+  font-size: 16px;
+  color: #333;
+}
+
+/* Responsive Styles */
+@media (max-width: 1200px) {
+  .tc-episode {
+    flex-direction: column;
+  }
+
+  .tc-episode-thumbnail {
+    height: 150px;
+  }
+
+  .tc-episode-title {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 768px) {
+  .tc-series {
+    flex-direction: column;
+  }
+
+  .tc-episode {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .tc-episode-thumbnail {
+    height: 120px;
+  }
+
+  .tc-episode-title {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .tc-episode {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .tc-episode-thumbnail {
+    height: 100px;
+  }
+
+  .tc-episode-title {
+    font-size: 12px;
+    padding: 8px;
+  }
+}

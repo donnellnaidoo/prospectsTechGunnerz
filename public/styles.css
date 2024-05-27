@@ -1,0 +1,270 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Space+Grotesk:wght@300..700&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Inter", sans-serif;
+}
+
+body {
+  background: #000;
+  min-height: 200vh;
+}
+
+header {
+  background-color: #f1f1f1;
+  height: 160px;
+}
+
+.header-vid {
+  margin-top: 160px;
+  width: 100%;
+}
+
+.nav-bar a {
+  color: #000;
+  font-weight: 500;
+  text-decoration: none;
+  margin: 0 20px;
+  text-transform: uppercase;
+}
+
+.login-icon {
+  width: 150px;
+}
+
+.login-icon a {
+  width: 40px;
+
+  text-decoration: none;
+}
+
+.login-icon a i {
+  font-size: 24px;
+}
+
+.nav-bar a:hover {
+  color: brown;
+}
+
+.nav-bar {
+  margin: auto;
+  text-align: center;
+}
+
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 30px 8%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 100;
+  transform: 0.6s;
+}
+
+header .logo {
+  position: relative;
+  font-weight: 700;
+  color: #000;
+  text-decoration: none;
+  font-size: 2em;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  transition: 0.6s;
+}
+
+header ul {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+header ul li {
+  position: relative;
+  list-style: none;
+}
+
+header ul li a {
+  position: relative;
+  margin: 0 15px;
+  text-decoration: none;
+  color: #fff;
+  letter-spacing: 2px;
+  font-weight: 500px;
+  transition: 0.5s;
+}
+
+.banner {
+  /*position: fixed;*/
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: -1;
+}
+
+.banner video {
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  display: block;
+  margin: auto;
+}
+
+.profile-creation {
+  width: 20px;
+}
+
+.text-wrapper {
+  display: flex;
+  justify-content: flex-start;
+  background: #f1f1f1;
+  overflow: hidden;
+  width: 100%;
+}
+
+.text-wrapper h1 {
+  font-size: 48px;
+  text-transform: uppercase;
+  color: transparent;
+  -webkit-text-stroke-width: 0.9px;
+  -webkit-text-stroke-color: black;
+  /* text-stroke-color: #fff; */
+  white-space: nowrap;
+  padding: 0 6rem;
+  letter-spacing: 1px;
+  animation: move-rtl 6000ms linear infinite;
+  padding-top: 50px;
+}
+
+@keyframes move-rtl {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+body {
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+  color: #333;
+  background-color: #f2f2f2;
+}
+
+.container {
+  justify-content: flex-start;
+  margin: 50px;
+  padding: 80px;
+  height: 599px;
+  width: 710px;
+  max-width: 960px;
+  text-align: center;
+  background-color: #000;
+  border-radius: 10px;
+}
+
+.title {
+  font-size: 3rem;
+  margin-bottom: 0.5rem;
+}
+
+.description {
+  font-size: 1.1rem;
+  margin-bottom: 1.5rem;
+}
+
+.action {
+  margin-top: 2rem;
+}
+
+.select-button {
+  display: inline-block;
+  background-color: #5798c9;
+  color: #fff;
+  padding: 10px 20px;
+  text-decoration: none;
+  border-radius: 4px;
+  transition: background-color 0.3s;
+}
+
+.select-button:hover {
+  background-color: #4380ae;
+}
+
+.video-container {
+  margin-top: 49px;
+}
+
+.video-container video {
+  height: 599px;
+  width: 1065px;
+  border-radius: 10px;
+}
+
+.first-section {
+  display: flex;
+  justify-content: center; /* Center horizontally */
+}
+
+.second-section {
+  display: flex;
+  justify-content: center; /* Center horizontally */
+}
+
+.video-container2 video {
+  margin: 50px;
+  height: 599px;
+  width: 1065px;
+  border-radius: 10px;
+}
+
+.container2 {
+  justify-content: flex-start;
+  padding: 80px;
+  height: 599px;
+  width: 710px;
+  max-width: 960px;
+  text-align: center;
+  background-color: #000;
+  border-radius: 10px;
+  margin-top: 49px;
+}
+
+.team-pic img {
+  width: 1920px;
+  height: 959px;
+}
+
+.third-section {
+  margin-top: 80px;
+  width: 100%;
+  border-radius: 10px;
+  display: inline-flex;
+  justify-content: center;
+}
+
+.one {
+  justify-content: flex-start;
+  height: 599px;
+  width: 710px;
+  max-width: 960px;
+  text-align: center;
+  background-color: #000;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+}
+
+.two video {
+  height: 599px;
+  width: 1065px;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+}

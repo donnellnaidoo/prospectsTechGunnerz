@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Chat with <%= otherUser.name %></title>
+    <link rel="stylesheet" href="/chat.css">
+    <link rel="icon" type="image/png" href="/assets/favicon.ico">
+</head>
+<body>
+    <h1><%= otherUser.name %></h1>
+
+    <div id="chat-box">
+        <% messages.forEach(message => { %>
+            <div class="message <%= (message.sender && currentUser && message.sender.toString() === currentUser.toString()) ? 'sent' : 'received' %>">
+                <p><%= message.message %></p>
+                <small class="time"><%= new Date(message.timestamp).toLocaleString() %></small>
+            </div>
+        <% }); %>
+    </div>
+
+    <form id="chat-form">
+        <input type="text" id="message" name="message" placeholder="Type your message..." required />
+        <button type="submit" id="send-button">Send</button>
+    </form>
+
+
+    <script src="/feed/darkmode.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+
+      
+        const socket = io();
+        const currentUserId = '<%= currentUser %>';
+        const otherUserId = '<%= otherUser._id %>';
+
+        socket.emit('joinRoom', { userId: currentUserId, otherUserId: otherUserId });
+
+        document.getElementById('chat-form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const message = document.getElementById('message').value;
+            if (message.trim() !== '') {
+                socket.emit('chatMessage', { senderId: currentUserId, receiverId: otherUserId, message: message });
+                document.getElementById('message').value = '';
+            }
+        });
+
+        socket.on('message', (message) => {
+            const chatBox = document.getElementById('chat-box');
+            const newMessageDiv = document.createElement('div');
+            newMessageDiv.classList.add('message');
+            newMessageDiv.classList.add(message.sender === currentUserId ? 'sent' : 'received');
+            newMessageDiv.innerHTML = `<p>${message.message}</p><small>${new Date(message.timestamp).toLocaleString()}</small>`;
+            chatBox.appendChild(newMessageDiv);
+            chatBox.scrollTop = chatBox.scrollHeight; // Scroll to bottom
+
+        });
+    </script>
+</body>
+</html>

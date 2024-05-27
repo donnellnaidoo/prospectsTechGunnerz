@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%= userName %></title>
+    <link rel="stylesheet" href="/feed/feed.css" />
+    <link rel="icon" type="image/png" href="/assets/favicon.ico">
+    <script src="/feed/navSearch.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://unicons.iconscout.com/release/v2.1.6/css/unicons.css"
+    />
+    <style>
+      .profile-header{
+        display: flex;
+      }
+      .profile-header > button{
+        width: 25opx;
+      }
+      .profile-header > button:hover{
+        
+        background-color: initial;
+      }
+    </style>
+    <style>
+      .search-bar {
+          display: flex;
+          align-items: center;
+      }
+      .search-bar input[type="search"] {
+          flex: 1;
+          padding: 10px;
+          font-size: 16px;
+      }
+      .search-bar button {
+          padding: 10px;
+          cursor: pointer;
+      }
+      .usersFound {
+          margin-top: 20px;
+      }
+      .usersFound ul {
+          list-style: none;
+          padding: 0;
+      }
+      .usersFound li {
+          padding: 10px;
+          border-bottom: 1px solid #ccc;
+      }
+  </style>
+  </head>
+  <body>
+    <!-- ....................NAVIGATION BAR......................... -->
+    <nav>
+      <div class="nav-container">
+        <h2 class="logo"><a href="/feed">Prospects</a></h2>
+        <div class="search-bar">
+          <div class="search-container">
+          <i class="uil uil-search searchIcon"></i>
+          <input type="search" placeholder="search" id="nav-search" oninput="searchNavUsers()"/>
+          </div>
+          <div id="searchResultsNav" class="list-group mt-2"></div>
+        </div>
+      </div>
+    </nav>
+    <main>
+      <div class="container">
+        <div class="left">
+          <!-- Side Bar -->
+          <div class="profile">
+            <div class="profile-picture profilePiconPP">
+              <img src="/uploads/<%= profilePicture %>" alt="Profile Picture">
+            </div>
+            
+          </div>
+          <div class="sidebar">
+            <a href="/feed" class="menu-item active" id="home">
+              <span><i class="uil uil-home side-icon"></i></span>
+              <h3>Home</h3>
+            </a>
+            <a href="/explore" class="menu-item" id="explore">
+              <span><i class="uil uil-compass side-icon"></i></span>
+              <h3>Explore</h3>
+            </a>
+            <a href="/training" class="menu-item" id="training">
+              <span><i class="uil uil-football side-icon"></i></span>
+              <h3>Training</h3>
+            </a>
+            <a href="/analytics" class="menu-item" id="analytics">
+              <span><i class="uil uil-analytics side-icon"></i></span>
+              <h3>Analytics</h3>
+            </a>
+            <a class="menu-item" id="theme">
+              <span><i class="uil uil-palette side-icon"></i></span>
+              <h3>Theme</h3>
+            </a>
+            <a class="menu-item" id="create">
+              <span><i class="uil uil-plus-circle side-icon"></i></span>
+              <h3>Create</h3>
+            </a>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <a href="/" class="menu-item" id="settings">
+              <span><i class="uil uil-sign-out-alt side-icon"></i></span>
+              <h3>Log Out</h3>
+            </a>
+          </div>
+        </div>
+        <!-- END OF LEFT -->
+
+        <!-- MIDDLE -->
+        <div class="middle">
+          <div class="profile-header">
+            <div class="profile-picture">
+              <img class="profile-picture profileiconPP" src="/uploads/<%= user.profilePicture %>" width="60px" height="60px">
+            </div>
+            <div class="profile-info">
+              <h1><%= userName %></h1>
+              <p><%= user.bio %></p>
+            </div>
+            <div>
+
+             <div>
+              <% if (isCurrentUser) { %>
+                <a href="/editProfile"><button class="btn btn-primary">Edit profile</button></a>
+
+              <% } else { %>
+              <div class="profile-buttons">
+                <a href="/chat/<%= user._id %>"><button class="btn btn-primary">Message</button></a>
+                <% if (isFollowing) { %>
+                    
+                    <form action="/api/unfollow/<%= user._id %>" method="POST">
+                      <button type="submit" id="unfollowButton" class="btn btn-danger" onclick="toggleFollow('<%= user._id %>'); refreshPage();">Unfollow</button>
+
+                    </form>
+                <% } else { %>
+                    
+                    <form action="/api/follow/<%= user._id %>" method="POST">
+                      <button type="submit" id="followButton" class="btn btn-primary" onclick="toggleFollow('<%= user._id %>'); refreshPage()">Follow</button>
+                    </form>
+                <% } %>
+
+            
+              </div>
+              <% } %>
+
+            
+          </div>
+            </div>  
+          </div>
+          <div class="profile-stats">
+            <div>
+              <strong><%= posts ? posts.length : 0 %></strong> posts
+            </div>
+            <div>
+              <strong><%= user.followers ? user.followers.length : 0 %></strong> followers
+            </div>
+            <div>
+              <strong><%= user.following ? user.following.length : 0 %></strong> following
+            </div>
+          </div>
+          
+
+          <div class="profile-posts">
+            <% posts.forEach(post => { %>
+                <img class="post" src="/uploads/<%= post.image %>" alt="<%= post.caption %>">
+            <% }); %>
+          </div>
+        
+          <div id="myModal" class="modal">
+            <span class="close">&times;</span>
+            <img class="modal-content" id="img01">
+          </div>
+        </div>
+
+        
+      </main>
+      <!-- ............THEME CUSTOMIZATION -->
+      <div class="customize-theme" id="themeBlock">
+        <div class="card">
+          <h2>Customize Your View</h2>
+          <p>Manage your background.</p>
+          <div class="background">
+            <div class="choose-bg">
+              <div class="bg-1 active">
+                <span></span>
+                <h5>Light</h5>
+              </div>
+              <div class="bg-2">
+                <span></span>
+                <h5>Lights Out</h5>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <script src="/feed/feed.js"></script>
+      <script src="/feed/darkmode.js"></script>
+      <script>
+        // // Get the modal
+        // var modal = document.getElementById("myModal");
+
+        // // Get the posts
+        // var posts = document.getElementsByClassName("post");
+
+        // // Get the image and insert it inside the modal
+        // var modalImg = document.getElementById("img01");
+
+        // // Loop through all posts and attach a click event listener to each one
+        // for (var i = 0; i < posts.length; i++) {
+        //   posts[i].addEventListener("click", function() {
+        //     modal.style.display = "block";
+        //     modalImg.src = this.src;
+        //   });
+        // }
+
+        // // Get the <span> element that closes the modal
+        // var span = document.getElementsByClassName("close")[0];
+
+        // // When the user clicks on <span> (x), close the modal
+        // span.onclick = function() { 
+        //   modal.style.display = "none";
+        // }
+        // Get the modal
+        var modal = document.getElementById("myModal");
+
+        // Get the posts
+        var posts = document.getElementsByClassName("post");
+
+        // Get the image and insert it inside the modal
+        var modalImg = document.getElementById("img01");
+
+        // Loop through all posts and attach a click event listener to each one
+        for (var i = 0; i < posts.length; i++) {
+          posts[i].addEventListener("click", function() {
+            modal.style.display = "block";
+            modalImg.src = this.src;
+          });
+        }
+
+        // Get the <span> element that closes the modal
+        var span = document.getElementsByClassName("close")[0];
+
+        // When the user clicks on <span> (x), close the modal
+        span.onclick = function() { 
+          modal.style.display = "none";
+        }
+
+        // When the user clicks anywhere outside of the image, close the modal
+        modal.onclick = function(event) {
+          if (event.target !== modalImg) {
+            modal.style.display = "none";
+          }
+        }
+
+      </script>
+        <script>
+          async function searchUsers() {
+           const searchTerm = document.getElementById('searchBox').value;
+           const resultsContainer = document.getElementById('searchResults');
+           resultsContainer.innerHTML = ''; // Clear previous results
+       
+           if (searchTerm.length < 2) {
+             return; // Only search if the term is at least 2 characters long
+           }
+       
+           try {
+             const response = await fetch(`/api/search?q=${encodeURIComponent(searchTerm)}`);
+             const users = await response.json();
+       
+             if (users.length === 0) {
+               resultsContainer.innerHTML = '<p class="list-group-item">No users found</p>';
+             } else {
+               users.forEach(user => {
+                 const userItem = document.createElement('a');
+                 userItem.href = `/profile/${user._id}`;
+                 userItem.classList.add('list-group-item', 'list-group-item-action');
+                 
+                 // Construct the image URL from '/uploads'
+                 const profilePictureUrl = user.profilePicture ? `/uploads/${user.profilePicture}` : 'default-profile-pic-url';
+       
+                 userItem.innerHTML = `
+                   <img src="${profilePictureUrl}" alt="${user.name}">
+                   <div class="user-info">
+                     <span class="user-name">${user.name}</span>
+                     <span class="user-email">${user.email}</span>
+                   </div>
+                 `;
+       
+                 resultsContainer.appendChild(userItem);
+               });
+             }
+           } catch (error) {
+             console.error('Error fetching users:', error);
+           }
+         }
+         </script>
+
+
+<script>
+  function toggleFollow(userId) {
+      const followButton = document.getElementById('followButton');
+      const unfollowButton = document.getElementById('unfollowButton');
+      
+      // Send AJAX request to toggle follow status
+      fetch(`/api/follow/${userId}`, {
+          method: 'POST',
+          headers: {
+              'Content-Type': 'application/json'
+          }
+      })
+      .then(response => {
+          if (response.ok) {
+              return response.json();
+          } else {
+              throw new Error('Failed to toggle follow status');
+          }
+      })
+      .then(data => {
+          console.log('Response data:', data); // Log the response data for debugging
+          // Update button appearance based on the response data
+          if (data.isFollowing) {
+              followButton.style.display = 'none';
+              unfollowButton.style.display = 'inline-block';
+          } else {
+              unfollowButton.style.display = 'none';
+              followButton.style.display = 'inline-block';
+          }
+      })
+      .catch(error => {
+          console.error('Error:', error);
+          // Handle error gracefully (e.g., show error message to the user)
+      });
+  }
+  
+  function refreshPage() {
+      location.reload();
+      window.scrollTo(0, 0); // Scroll to the top of the page
+  }
+  </script>
+    </main>
+  </body>
+</html>

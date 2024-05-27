@@ -1,0 +1,106 @@
+
+.about-us{
+    width: 100%;
+    text-align: center;
+
+}
+
+.about-us h1 {
+    text-align: center;
+    font-size: 40px;
+    color: black;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin-top: 50px;
+
+}
+
+.about-us h1::after{
+    content: "";
+    height: 5px;
+    width: 20px;
+    background-color: black ;
+    border-radius: 10px;
+    display: block;
+    margin: auto;
+
+}
+.about-wrapper{
+    padding: 0px 60px;
+    margin: 60px auto;
+
+}
+.test-content{
+    width: 60%;
+    float: left;
+    text-align: left;
+    padding: 0px 30px;
+
+}
+.test-content h3{
+    color: #222;
+    letter-spacing: 1px;
+}
+.test-content p{
+    font-size: 17px;
+    color: #3d3d3d;
+    margin-top: 20px;
+}
+.test-content .button{
+    margin-top: 40px;
+}
+.test-content .button a{
+    color: #fff ;
+    background-color: #2b9ec2;
+    border: 1px solid #2b9ec2;
+    padding: 10px 35px;
+    text-decoration: none;
+    letter-spacing: 1px;
+    font-size: 22px;
+    text-transform: uppercase;
+
+}
+.test-content .button a:hover{
+    background-color: #fff;
+    color: #2b9ec2;
+}
+.image-section{
+    width: 40%;
+    float: right;
+    padding: 0px 30px;
+}
+
+.about-image-section img{
+    max-width: 100%;
+    height: 400px;
+    border-radius: 20px 20px 20px 20px;
+    object-fit: cover;
+}
+
+@media screen and (max-width: 900px){
+    .about-us{
+        width: 100%;
+        padding-top: 20px;
+    }
+    .about-us h1{
+        font-size: 32px;
+    }
+    .test-content{
+        width: 100%;
+        float: none;
+    }
+    .test-content .button{
+        margin-top: 30px;
+        text-align: center;
+    }
+    .test-content .button a{
+        padding: 8px 25px;
+
+    }
+    .about-image-section{
+        float: none;
+        width: 100%;
+        margin-top: 25px;
+
+    }
+}

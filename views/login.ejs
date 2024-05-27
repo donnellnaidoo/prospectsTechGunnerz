@@ -1,0 +1,1069 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Log In</title>
+    <link rel="icon" type="image/png" href="/assets/favicon.ico">
+    <!-- bootstrap css -->
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous"
+    />
+    <!-- bootstrap css -->
+    <link rel="stylesheet" href="style.css" />
+    
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
+
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,300;0,6..12,400;0,6..12,500;0,6..12,600;0,6..12,700;0,6..12,800;0,6..12,900;1,6..12,500&family=Nunito:wght@300;400;500;600;700;800;900&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Nunito", sans-serif;
+  list-style: none;
+  text-decoration: none;
+  box-sizing: border-box;
+  font-style: normal;
+  scroll-behavior: smooth;
+}
+
+.container {
+  width: 95%;
+  margin: auto;
+}
+
+/* Add these styles to make the header responsive */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px; /* Add padding for better spacing */
+  background-color: White;
+}
+
+/* Adjust the font size of the header text for smaller screens */
+.header h2 {
+  font-size: 24px; /* Adjust the font size as needed */
+}
+
+/* Adjust the styling of the navigation links for smaller screens */
+.nav-links {
+  flex: 1; /* Allow the navigation to grow and take up available space */
+  text-align: center; /* Center-align the navigation links */
+}
+
+.nav-links ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  justify-content: center;
+}
+
+.nav-links ul li {
+  margin-right: 10px;
+}
+
+.nav-links ul li:last-child {
+  margin-right: 0; /* Remove right margin from the last nav item */
+}
+
+.nav-links ul li a {
+  display: block;
+  padding: 10px 15px;
+  text-decoration: none;
+  color: black;
+}
+
+.nav-links ul li a:hover {
+  background-color: #ddd;
+}
+
+.fa-bars {
+  display: none;
+}
+
+/* Add media query for smaller screens */
+@media (max-width: 768px) {
+  .header {
+    flex-direction: column; /* Stack elements vertically on smaller screens */
+    align-items: stretch; /* Stretch elements to fit container width */
+    text-align: center; /* Center-align header elements */
+  }
+
+  .nav-links ul {
+    display: none; /* Initially hide the navigation links */
+  }
+
+  .nav-links ul.show {
+    display: flex; /* Show the navigation links when the 'show' class is applied */
+    flex-direction: column; /* Stack nav items vertically */
+    align-items: center; /* Center-align nav items */
+  }
+
+  .header h2 {
+    margin-bottom: 10px; /* Add some space below the header text */
+  }
+
+  .nav-links {
+    margin-top: 10px; /* Add space above the navigation links */
+  }
+
+  .nav-links ul {
+    flex-direction: column; /* Stack nav items vertically */
+    align-items: center; /* Center-align nav items */
+  }
+
+  .nav-links ul li {
+    margin: 5px 0; /* Add space between nav items */
+  }
+}
+
+.section1 {
+  height: 100%;
+  width: 100%;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.section1 .one .header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: white;
+  padding: 20px 0;
+  z-index: 10;
+}
+
+.section1 .one .header i {
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.section1 video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -1;
+}
+
+.section1 .one .text-content {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: white;
+}
+
+
+.section1 .one .text-content .head h1 {
+  font-size: 6.8vw;
+  font-weight: 600;
+  line-height: 7rem;
+}
+
+/* NOW LETS MAKE OUR CURSOR */
+.cursor {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: white;
+  z-index: 80;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* =================================section2=================================== */
+
+.section2 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  width: 100%;
+  cursor: pointer;
+}
+
+.section2 video {
+  position: absolute;
+  height: 100%;
+  width: fit-content;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+/* ===========================section3======================== */
+
+.section3 {
+  min-height: 100vh;
+  width: 100%;
+  padding: 20px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.section3 .left img{
+  width: 60vh;
+}
+
+.section3 .three {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.section3 .three .left,
+.section3 .three .right {
+  width: 100%;
+  height: 100%;
+}
+
+.section3 .three .left video {
+  width: 80%;
+  height: 80%;
+}
+
+.section3 .three .right h1 {
+  margin: 30px 0;
+  font-weight: 500;
+}
+
+/* ======================================section4-============================ */
+
+.section4 {
+  min-height: 100vh;
+  height: 100%;
+  padding: 20px 0;
+  overflow: hidden;
+}
+
+.section4 .services {
+  height: 150px;
+  width: 150px;
+  border-radius: 50%;
+  border: 1px solid #ccc;
+  color: #333;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
+}
+
+.section4 .services:hover {
+  background-color: #0f0f0f;
+}
+
+.section4 .services:hover h5 {
+  color: white;
+}
+
+.section4 .four .moving-text .text {
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+  margin: 50px 0;
+}
+
+.section4 .four .moving-text .text .first {
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+  animation: move linear infinite 15s;
+}
+
+.section4 .four .moving-text .text .first video {
+  height: 150px;
+  width: 150px;
+  margin: 0 50px;
+}
+
+.section4 .four .moving-text .text .first h1 {
+  font-size: 6vw;
+  text-transform: uppercase;
+}
+
+@keyframes move {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-100%);
+  }
+}
+
+/* ============projects========== */
+
+.section4 .four .projects {
+  position: relative;
+  height: 100vh;
+  width: 100%;
+  z-index: 10;
+  overflow: hidden;
+}
+
+.section4 .four .projects .bg {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100%;
+  z-index: -1;
+}
+
+.section4 .four .projects .bg::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #0f0f0f6e;
+  z-index: 1;
+}
+
+.section4 .four .projects .bg video {
+  width: 100%;
+  height: 100vh;
+  object-fit: cover;
+  position: relative;
+  display: none;
+}
+
+.section4 .four .projects .first-project .first {
+  margin: 100px 0;
+  padding: 40px;
+  /* background-color: red; */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.section4 .four .projects .first-project .first .about {
+  display: flex;
+}
+
+.section4 .four .projects .first-project .first .about h4 {
+  margin: 0 30px;
+  border: 1px solid #ccc;
+  padding: 7px 10px;
+  border-radius: 30px;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all ease 1s;
+}
+
+.section4 .four .projects .first-project .first:hover h4 {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ========================================SECTION5=================== */
+
+.about {
+  cursor: pointer;
+}
+
+.section5 {
+  height: 100vh;
+  width: 100%;
+  padding: 20px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.section5 .right img{
+  width: 60vh;
+}
+
+.section5 .five {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 30px;
+}
+
+.section5 .five .left,
+.section5 .five .right {
+  height: 100%;
+  width: 100%;
+  margin-left: 100px;
+}
+
+.section5 .five .right video {
+  height: 90%;
+  width: 90%;
+}
+
+.section5 .five .left .one {
+  overflow: hidden;
+  margin: 50px 0;
+}
+
+.section5 .five .left h1 {
+  font-size: 2.5vw;
+}
+
+/* ================================SECTION6================= */
+
+.section6 {
+  width: 100%;
+  justify-content: center;
+  overflow: hidden;
+  margin-bottom: 20px;
+}
+
+.section6 .six .left {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.section6 .six .move {
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+  animation: scrolling linear infinite 15s;
+}
+
+.section6 .six .move h1 {
+  font-size: 3.7vw;
+  text-transform: uppercase;
+  font-weight: 900;
+}
+
+.section6 .six .move span {
+  color: red;
+}
+
+.section6 .six .move i {
+  margin: 0 30px;
+  font-size: 50px;
+  color: red;
+}
+
+@keyframes scrolling {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+.section6 .six .right {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 30px 0;
+  white-space: nowrap;
+}
+
+.section6 .six .right .like {
+  display: flex;
+  width: 100%;
+  white-space: nowarp;
+  animation: like linear infinite 15s;
+}
+
+.section6 .six .right .like .one {
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+}
+
+.section6 .six .right .like .one h1 {
+  font-size: 3.7vw;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.section6 .six .right .like .one i {
+  font-size: 50px;
+  margin: 0 50px;
+  color: red;
+}
+
+@keyframes like {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+/* =============================section7======================== */
+
+.section7 {
+  height: 100vh;
+  width: 100%;
+  padding: 30px 0;
+  text-align: center;
+}
+
+.section7 .follow .box {
+  margin: 50px 0;
+  padding: 15px 0;
+  /* background: aqua; */
+  position: relative;
+  overflow: hidden;
+}
+
+.section7 .follow .box .back {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #222222;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: 0.7s ease all;
+}
+
+.section7 .follow .box:hover .back {
+  background-color: #222222;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.section7 .follow .box .back .insta {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* background: red; */
+  animation: insta linear infinite 15s;
+  opacity: 0;
+  scale: 0.5;
+  transition: all ease 0.7s;
+}
+
+.section7 .follow .box:hover .back .insta {
+  opacity: 1;
+  scale: 1.1;
+}
+
+.section7 .follow .box .back .insta h3 {
+  margin: 0 50px;
+  font-size: 2vw;
+  white-space: nowrap;
+}
+
+@keyframes insta {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .container {
+    width: 90%; /* Adjust container width for smaller screens */
+  }
+
+  .section1 .one .text-content .head h1 {
+    font-size: 10vw; /* Adjust font size for smaller screens */
+    line-height: 1.2; /* Adjust line height */
+  }
+
+  .section4 .services {
+    width: 100px; /* Adjust service box width */
+    height: 100px; /* Adjust service box height */
+  }
+
+  .section6 .six .move h1 {
+    font-size: 5vw; /* Adjust font size for smaller screens */
+  }
+
+  .section6 .six .right .like .one h1 {
+    font-size: 5vw; /* Adjust font size for smaller screens */
+  }
+}
+
+/* For screens smaller than 480px (small smartphones) */
+@media only screen and (max-width: 480px) {
+  .container {
+    width: 85%; /* Adjust container width for even smaller screens */
+  }
+
+  .section1 .one .text-content .head h1 {
+    font-size: 12vw; /* Further adjust font size for smaller screens */
+    line-height: 1.1; /* Further adjust line height */
+  }
+
+  .section4 .services {
+    width: 80px; /* Further adjust service box width */
+    height: 80px; /* Further adjust service box height */
+  }
+
+  .section6 .six .move h1 {
+    font-size: 6vw; /* Further adjust font size for smaller screens */
+  }
+
+  .section6 .six .right .like .one h1 {
+    font-size: 6vw; /* Further adjust font size for smaller screens */
+  }
+
+  .three {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .left img {
+    width: 100%;
+  }
+
+  .left img:hover {
+    width: none;
+  }
+}
+
+
+
+/* Login */
+
+.login__form.active {
+  opacity: 1;
+}
+
+.login {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: var(--z-modal);
+  background-color: hsla(230, 75%, 15%, 0.1);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px); /* For safari */
+  opacity: 1;
+  pointer-events: none;
+  transition: opacity 0.4s;
+}
+
+.acc-type {
+  border: 2.5px solid #bfc4d9;
+  border-radius: 10px;
+  padding: 15px;
+  margin-top: 0;
+  height: 51px;
+}
+
+.acc-type {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.login__close {
+  position: absolute;
+  top: 2rem;
+  right: 2rem;
+  font-size: 1.5rem;
+  color: var(--title-color);
+  cursor: pointer;
+}
+
+.login {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.register__form,
+.login__form,
+.login__group {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.login__form {
+  background-color: #bfc4d9;
+  width: 30%;
+  background-color: var(--container-color);
+  padding: 2rem 1.5rem 2.5rem;
+  box-shadow: 0 8px 32px hsla(230, 75%, 15%, 0.2);
+  border-radius: 1rem;
+  row-gap: 1.25rem;
+  text-align: center;
+  transform: translateY(-1rem);
+  transition: transform 0.4s;
+}
+
+.register__form {
+  width: 30%;
+  background-color: var(--container-color);
+  padding: 2rem 1.5rem 2.5rem;
+  box-shadow: 0 8px 32px hsla(230, 75%, 15%, 0.2);
+  border-radius: 1rem;
+  row-gap: 1.25rem;
+  text-align: center;
+  transform: translateY(-1rem);
+  transition: transform 0.4s;
+}
+
+.login__title {
+  font-size: var(--h2-font-size);
+  color: var(--title-color);
+}
+
+.login__group {
+  row-gap: 1rem;
+}
+
+.login__label {
+  display: block;
+  text-align: initial;
+  color: var(--title-color);
+  font-weight: var(--font-medium);
+  margin-bottom: 0.25rem;
+}
+
+.login__input {
+  width: 100%;
+  background-color: var(--container-color);
+  border: 2px solid var(--border-color);
+  padding: 1rem;
+  border-radius: 0.5rem;
+  color: var(--text-color);
+}
+
+.login__input::placeholder {
+  color: var(--text-color);
+}
+
+.login__signup {
+  margin-bottom: 0.5rem;
+}
+
+.login__signup a {
+  color: var(--first-color);
+}
+
+.login__forgot {
+  display: inline-block;
+  color: var(--first-color);
+  margin-bottom: 1.25rem;
+}
+
+.login__button {
+  display: inline-block;
+  background-color: var(--first-color);
+  width: 100%;
+  color: #fff;
+  font-weight: var(--font-semi-bold);
+  padding: 1rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: box-shadow 0.4s;
+}
+
+.login__button:hover {
+  box-shadow: 0 4px 24px hsla(230, 75%, 40%, 0.4);
+}
+
+/* Show login */
+.show-login {
+  opacity: 1;
+  pointer-events: initial;
+}
+
+.show-login .login__form {
+  transform: translateY(0);
+}
+
+.show-registration {
+  opacity: 1;
+  pointer-events: initial;
+}
+
+.show-registration .login__form {
+  transform: translateY(0);
+}
+
+.social-icons {
+  margin: 20px 0;
+}
+
+.social-icons a {
+  border: 1px solid #ccc;
+  border-radius: 20%;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 3px;
+  width: 40px;
+  height: 40px;
+}
+
+/* Mobile devices (portrait and landscape) */
+@media (max-width: 767px) {
+  .login__form,
+  .register__form {
+    width: 90%;
+    padding: 1.5rem 1rem 2rem;
+  }
+
+  .login__close {
+    top: 1rem;
+    right: 1rem;
+    font-size: 1.25rem;
+  }
+
+  .login__title {
+    font-size: var(--h3-font-size);
+  }
+
+  .login__button {
+    padding: 0.75rem;
+  }
+
+  .acc-type {
+    flex-direction: column;
+    height: auto;
+  }
+}
+
+/* Tablets (portrait and landscape) */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .login__form,
+  .register__form {
+    width: 70%;
+    padding: 1.75rem 1.25rem 2.25rem;
+  }
+
+  .login__title {
+    font-size: var(--h2-font-size);
+  }
+
+  .login__button {
+    padding: 0.85rem;
+  }
+
+  .acc-type {
+    flex-direction: row;
+    height: auto;
+  }
+}
+
+/* Small laptops and larger tablets (landscape) */
+@media (min-width: 1024px) and (max-width: 1279px) {
+  .login__form,
+  .register__form {
+    width: 50%;
+    padding: 2rem 1.5rem 2.5rem;
+  }
+
+  .login__title {
+    font-size: var(--h2-font-size);
+  }
+
+  .login__button {
+    padding: 1rem;
+  }
+
+  .acc-type {
+    flex-direction: row;
+    height: auto;
+  }
+}
+
+/* Large laptops and desktops */
+@media (min-width: 1280px) {
+  .login__form,
+  .register__form {
+    width: 30%;
+    padding: 2rem 1.5rem 2.5rem;
+  }
+
+  .login__title {
+    font-size: var(--h2-font-size);
+  }
+
+  .login__button {
+    padding: 1rem;
+  }
+
+  .acc-type {
+    flex-direction: row;
+    height: auto;
+  }
+}
+
+
+/*=============== GOOGLE FONTS ===============*/
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap");
+
+:root {
+  --header-height: 3.5rem;
+  /*========== Colors ==========*/
+
+  --first-color: hsl(220, 68%, 54%);
+  --first-color-lighten: hsl(220, 68%, 97%);
+  --title-color: hsl(220, 48%, 28%);
+  --text-color: hsl(220, 12%, 45%);
+  --body-color: hsl(220, 100%, 99%);
+
+  --body-font: "Poppins", sans-serif;
+  --normal-font-size: 0.938rem;
+  --small-font-size: 0.813rem;
+  --smaller-font-size: 0.75rem;
+
+  --font-medium: 500;
+  --font-semi-bold: 600;
+
+  --z-tooltip: 10;
+  --z-fixed: 100;
+}
+
+:root {
+  --header-height: 3.5rem;
+
+  --first-color: hsl(230, 75%, 56%);
+  --title-color: hsl(230, 75%, 15%);
+  --text-color: hsl(230, 12%, 40%);
+  --body-color: hsl(230, 100%, 98%);
+  --container-color: hsl(230, 100%, 97%);
+  --border-color: hsl(230, 25%, 80%);
+
+  --body-font: "Syne", sans-serif;
+  --h2-font-size: 1.25rem;
+  --normal-font-size: 0.938rem;
+
+  --font-regular: 400;
+  --font-medium: 500;
+  --font-semi-bold: 600;
+
+  --z-fixed: 100;
+  --z-modal: 1000;
+}
+
+@media screen and (min-width: 1024px) {
+  :root {
+    --normal-font-size: 1rem;
+    --small-font-size: 0.875rem;
+    --smaller-font-size: 0.813rem;
+  }
+}
+
+/*=============== BASE ===============*/
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  font-family: var(--body-font);
+  font-size: var(--normal-font-size);
+  background-color: var(--body-color);
+  color: var(--text-color);
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+
+    </style>
+  </head>
+  <body>
+    <div class="login show-login" id="login">
+
+      <form action="/login" class="login__form" method="POST">
+        <% if(error != ''){ %>
+          <div class="alert alert-warning alert-dismissible fade show" role="alert">
+            <%= error %>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <% } %>
+        <h2 class="login__title">Log In</h2>
+        <p>or sign in with</p>
+
+        <div class="login__group">
+          <div>
+            <label for="email" class="login__label">Email</label>
+            <input
+              name="email"
+              type="email"
+              placeholder="Email"
+              id="email"
+              class="login__input"
+            />
+          </div>
+
+          <div>
+            <label for="password" class="login__label">Password</label>
+            <input
+              name="password"
+              type="password"
+              placeholder="Password"
+              id="password"
+              class="login__input"
+            />
+          </div>
+        </div>
+
+        <div>
+          <p class="login__signup">
+            Dont have an account? <a href="/registration">Sign up</a>
+          </p>
+
+          <a href="/forgotPassword" class="login__forgot"> Forgot Password </a>
+
+          <button type="submit" class="login__button">Log In</button>
+        </div>
+      </form>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="main.js"></script>
+    <script src="header.js"></script>
+    <!-- <script src="index.js"></script> -->
+
+     <!-- bootstrap js -->
+     <script
+     src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+     integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+     crossorigin="anonymous"
+   ></script>
+   <!-- bootstrap js -->
+  </body>
+</html>

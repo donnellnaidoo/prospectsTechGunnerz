@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Explore • <%= userName %></title>
+    <link rel="stylesheet" href="/feed/feed.css" />
+    <script src="/feed/navSearch.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://unicons.iconscout.com/release/v2.1.6/css/unicons.css"
+    />
+    <link rel="icon" type="image/png" href="/assets/favicon.ico">
+    <style>
+      .search-bar {
+          display: flex;
+          align-items: center;
+      }
+      .search-bar input[type="search"] {
+          flex: 1;
+          padding: 10px;
+          font-size: 16px;
+      }
+      .search-bar button {
+          padding: 10px;
+          cursor: pointer;
+      }
+      .usersFound {
+          margin-top: 20px;
+      }
+      .usersFound ul {
+          list-style: none;
+          padding: 0;
+      }
+      .usersFound li {
+          padding: 10px;
+          border-bottom: 1px solid #ccc;
+      }
+  </style>
+  </head>
+  <body>
+    <!-- ....................NAVIGATION BAR......................... -->
+    <nav>
+      <div class="nav-container">
+        <h2 class="logo"><a href="/feed">Prospects</a></h2>
+        <div class="search-bar">
+          <div class="search-container">
+          <i class="uil uil-search searchIcon"></i>
+          <input type="search" placeholder="search" id="nav-search" oninput="searchNavUsers()"/>
+          </div>
+          <div id="searchResultsNav" class="list-group mt-2"></div>
+        </div>
+      </div>
+
+    </nav>
+    <main>
+        <div class="container">
+          <div class="left">
+            <!-- Side Bar -->
+            <div class="profile">
+              <div class="profile-picture">
+                <img src="/uploads/<%= profilePicture %>" alt="Profile Picture">
+              </div>
+              <div class="handle">
+                <h4><a href="/profile/<%= user %>"><%= userName %></a></h4>
+                <p class="text-muted">@<%= accountType %></p>
+              </div>
+            </div>
+            <div class="sidebar">
+              <a href="/feed" class="menu-item active" id="home">
+                <span><i class="uil uil-home side-icon"></i></span>
+                <h3>Home</h3>
+              </a>
+              <a href="/explore" class="menu-item" id="explore">
+                <span><i class="uil uil-compass side-icon"></i></span>
+                <h3>Explore</h3>
+              </a>
+              <a href="/training" class="menu-item" id="training">
+                <span><i class="uil uil-football side-icon"></i></span>
+                <h3>Training</h3>
+              </a>
+              <a href="/analytics" class="menu-item" id="analytics">
+                <span><i class="uil uil-analytics side-icon"></i></span>
+                <h3>Analytics</h3>
+              </a>
+              <a class="menu-item" id="theme">
+                <span><i class="uil uil-palette side-icon"></i></span>
+                <h3>Theme</h3>
+              </a>
+              <a class="menu-item" id="create">
+                <span><i class="uil uil-plus-circle side-icon"></i></span>
+                <h3>Create</h3>
+              </a>
+              <br>
+              <br>
+              <br>
+              <br>
+              <br>
+              <br>
+              <br>
+              <br>
+              <br>
+              <br>
+              <br>
+              <br>
+              <a href="/" class="menu-item" id="settings">
+                <span><i class="uil uil-sign-out-alt side-icon"></i></span>
+                <h3>Log Out</h3>
+              </a>
+            </div>
+          </div>
+            <!-- END OF LEFT -->
+    
+            <!-- MIDDLE -->
+            <div class="middle">
+              <% posts.forEach(post => { %>
+                <div class="contents-post">
+                  <div class="post">
+                    <div class="post-header">
+                      <img class="profile-picture" src="/uploads/<%= post.user.profilePicture %>">
+    
+                        <p class="post-author"> <%= post.user.name %> </p>
+                        <!-- <a href="/follow">Follow</a> -->
+                        <div class="post-menu">
+                          <i class="uil uil-ellipsis-h" onclick="toggleMenu(this)"></i>
+                          <div class="menu-content">
+                            <a href="#" onclick="editPost('<%= post._id %>', '<%= post.content %>')">Edit</a>
+                            <a href="#" onclick="deletePost('<%= post._id %>')">Delete</a>
+                            <a href="#">Share</a>
+                            <a href="#">Report</a>
+                          </div>
+                        </div>
+                    </div>
+                    <div class="post-image">
+                        <img src="/uploads/<%= post.image %>">
+                    </div>
+                    <div class="post-content interact">
+                      <div class="post-content">
+                        <i class="uil uil-heart"></i>
+                        <i class="uil uil-share"></i>
+                        <i class="uil uil-bookmark-full save"></i>
+                    </div>
+                  </div>
+                    <div class="post-content">
+                        <p><%= post.content %></p>
+                    </div>
+                    <div class="post-details">
+                      <i class="ri-heart-line"></i>
+                        <p class="likes"> likes</p>
+                        <p class="comments"></p>
+                    </div>
+                    </div>
+                </div>
+              <% }); %>
+              </div>
+            <!-- RIGHT SECTION -->
+            <div class="right">
+              <div class="messages">
+                <div class="container">
+                  <div class="row">
+                    <div class="col-md-12">
+                      <input type="text" id="searchBox" class="form-control" placeholder="Search for users..." oninput="searchUsers()">
+                      <div id="searchResults" class="list-group mt-2"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+          </div>
+
+    
+        
+    </main>
+    <!-- ............THEME CUSTOMIZATION -->
+    <div class="customize-theme" id="themeBlock">
+      <div class="card">
+        <h2>Customize Your View</h2>
+        <p>Manage your background.</p>
+        <div class="background">
+          <!-- <h4>Background</h4> -->
+          <div class="choose-bg">
+            <div class="bg-1 active">
+              <span></span>
+              <h5 for="bg-1">Light</h5>
+            </div>
+            <div class="bg-2">
+              <span></span>
+              <h5 for="bg-2">Lights Out</h5>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="/feed/feed.js"></script>
+    <script src="/feed/darkmode.js"></script>
+    <script src="../public/feed/create.js"></script>
+    <script>
+      async function searchUsers() {
+       const searchTerm = document.getElementById('searchBox').value;
+       const resultsContainer = document.getElementById('searchResults');
+       resultsContainer.innerHTML = ''; // Clear previous results
+   
+       if (searchTerm.length < 2) {
+         return; // Only search if the term is at least 2 characters long
+       }
+   
+       try {
+         const response = await fetch(`/api/search?q=${encodeURIComponent(searchTerm)}`);
+         const users = await response.json();
+   
+         if (users.length === 0) {
+           resultsContainer.innerHTML = '<p class="list-group-item">No users found</p>';
+         } else {
+           users.forEach(user => {
+             const userItem = document.createElement('a');
+             userItem.href = `/profile/${user._id}`;
+             userItem.classList.add('list-group-item', 'list-group-item-action');
+             
+             // Construct the image URL from '/uploads'
+             const profilePictureUrl = user.profilePicture ? `/uploads/${user.profilePicture}` : 'default-profile-pic-url';
+   
+             userItem.innerHTML = `
+               <img src="${profilePictureUrl}" alt="${user.name}">
+               <div class="user-info">
+                 <span class="user-name">${user.name}</span>
+                 <span class="user-email">${user.email}</span>
+               </div>
+             `;
+   
+             resultsContainer.appendChild(userItem);
+           });
+         }
+       } catch (error) {
+         console.error('Error fetching users:', error);
+       }
+     }
+     </script>
+  </body>
+</html>

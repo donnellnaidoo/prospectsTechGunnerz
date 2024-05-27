@@ -1,0 +1,88 @@
+/* Media Queries for Smaller Devices */
+@media (max-width: 768px) {
+  /* Header */
+  .header {
+    flex-direction: column;
+    align-items: stretch;
+    text-align: center;
+  }
+
+  .nav-links ul {
+    display: none;
+  }
+
+  .nav-links ul.show {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .header h2 {
+    margin-bottom: 10px;
+  }
+
+  .nav-links {
+    margin-top: 10px;
+  }
+
+  .nav-links ul {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .nav-links ul li {
+    margin: 5px 0;
+  }
+
+  .fa-bars {
+    display: block;
+    cursor: pointer;
+  }
+
+  /* Section 1 */
+  .section1 .one .text-content .head h1 {
+    font-size: 8vw;
+    line-height: 1.2;
+  }
+
+  /* Section 3 */
+  .section3 .left img,
+  .section5 .right img,
+  .section5 .five .right video {
+    width: 80%;
+  }
+
+  .section3 .three .left video {
+    width: 100%;
+    height: auto;
+  }
+
+  /* Section 4 and Section 7 */
+  .section4 .four .moving-text .text .first h1,
+  .section7 .seven .moving-text .text .first h1 {
+    font-size: 8vw;
+  }
+
+  /* Section 5 */
+  .section5 .five .left .one {
+    margin: 20px 0;
+  }
+
+  /* Section 6 */
+  .section6 .six .text h1 {
+    font-size: 12vw;
+  }
+
+  /* Registration Form */
+  .register__form {
+    width: 90%;
+  }
+}
+
+/* Media Queries for Tablets */
+@media only screen and (min-width: 769px) and (max-width: 992px) {
+  /* Registration Form */
+  .register__form {
+    width: 90%;
+  }
+}
