@@ -1,0 +1,248 @@
+@import url("/feed/feed.css");
+
+html{
+    background-color: var(--background-white);
+    color: var(--black);
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: var(--background-white);
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+ #chat-box .time{
+    color: var(--background-white);
+ }
+
+
+  h1 {
+    background-color: var(--background-white);
+
+    padding: 20px;
+    margin: 0;
+    width: 100%;
+    text-align: center;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  }
+
+  #chat-box {
+    width: 100%;
+    max-width: 600px;
+    background-color:var(--background-white);
+    padding: 20px;
+    margin: 20px 0;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    overflow-y: auto;
+    max-height: 70vh;
+  }
+
+  .message {
+    margin: 10px 0;
+    padding: 10px;
+    border-radius: 10px;
+    max-width: 75%;
+    clear: both;
+    display: flex;
+    justify-content: space-between;
+    word-wrap: break-word; /* Ensures long words break to the next line */
+    white-space: pre-wrap; /* Preserves whitespace and ensures text wraps */
+    overflow-wrap: break-word; /* Ensures long words break to the next line */
+  }
+  
+  p{
+    max-width: 75%;
+    word-wrap: break-word; /* Ensures long words break to the next line */
+    white-space: pre-wrap; /* Preserves whitespace and ensures text wraps */
+    overflow-wrap: break-word;
+    text-align: left;
+  }
+  .message.sent {
+    background-color: hsl(208, 98%, 48%);
+    color: white;
+    align-self: flex-end;
+    margin-left: auto;
+    text-align: right;
+  }
+
+  .message.received {
+    background-color: var(--black);
+    border: 1px solid #ddd;
+    align-self: flex-start;
+    margin-right: auto;
+    color: var(--background-white);
+    text-align: left;
+  }
+
+  .message p {
+    margin: 0;
+    padding: 0;
+  }
+
+  .message small {
+    display: block;
+    margin-top: 5px;
+    color: #888;
+  }
+
+  form {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    max-width: 600px;
+    padding: 10px;
+    background-color:var(--background-white);
+    box-shadow: 0 -1px 3px rgba(0, 0, 0, 0.1);
+  }
+
+  form input[type="text"] {
+    width: 80%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 20px;
+    outline: none;
+    font-size: 16px;
+  }
+
+  form button {
+    width: 18%;
+    padding: 10px;
+    margin-left: 10px;
+    background-color: #0095f6;
+    border: none;
+    border-radius: 20px;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+  }
+
+  form button:hover {
+    background-color: #007bb5;
+  }
+
+  .message.sent {
+    text-align: right;
+  }
+  .message.received {
+    text-align: left;
+  }
+
+  /* Base styles for mobile devices */
+@media (max-width: 600px) {
+  body {
+    font-size: 14px;
+  }
+
+  h1 {
+    padding: 15px;
+    font-size: 20px;
+  }
+
+  #chat-box {
+    padding: 15px;
+    margin: 15px 0;
+    max-height: 60vh;
+  }
+
+  form input[type="text"] {
+    width: 70%;
+    font-size: 14px;
+  }
+
+  form button {
+    width: 28%;
+    padding: 8px;
+    font-size: 14px;
+  }
+}
+
+/* Styles for tablets */
+@media (min-width: 601px) and (max-width: 768px) {
+  body {
+    font-size: 16px;
+  }
+
+  h1 {
+    padding: 18px;
+    font-size: 22px;
+  }
+
+  #chat-box {
+    padding: 18px;
+    margin: 18px 0;
+    max-height: 65vh;
+  }
+
+  form input[type="text"] {
+    width: 75%;
+    font-size: 15px;
+  }
+
+  form button {
+    width: 23%;
+    padding: 9px;
+    font-size: 15px;
+  }
+}
+
+/* Styles for desktops */
+@media (min-width: 769px) and (max-width: 1024px) {
+  body {
+    font-size: 18px;
+  }
+
+  h1 {
+    padding: 20px;
+    font-size: 24px;
+  }
+
+  #chat-box {
+    padding: 20px;
+    margin: 20px 0;
+    max-height: 70vh;
+  }
+
+  form input[type="text"] {
+    width: 78%;
+    font-size: 16px;
+  }
+
+  form button {
+    width: 20%;
+    padding: 10px;
+    font-size: 16px;
+  }
+}
+
+/* Styles for large desktops */
+@media (min-width: 1025px) {
+  body {
+    font-size: 20px;
+  }
+
+  h1 {
+    padding: 20px;
+    font-size: 26px;
+  }
+
+  #chat-box {
+    padding: 20px;
+    margin: 20px 0;
+    max-height: 75vh;
+  }
+
+  form input[type="text"] {
+    width: 80%;
+    font-size: 18px;
+  }
+
+  form button {
+    width: 18%;
+    padding: 10px;
+    font-size: 18px;
+  }
+}

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/public/style.css">
+</head>
+<body>
+      
+     <!-- Register -->
+     <div class="login registration" id="registration">
+        <form action="/sign_up" class="login__form" method="post">
+           <h2 class="login__title">Register</h2>
+           <p>or register with</p>
+           
+           <div class="login__group">
+              <div class="social-icons">
+                <a href="#" class="icons" id="google-register"
+                  ><i class="fa-brands fa-google-plus-g" ></i
+                ></a>
+                <a href="#" class="icons"
+                  ><i class="fa-brands fa-facebook-f"></i
+                ></a>
+                <a href="#" class="icons"><i class="fa-brands fa-instagram"></i></a>
+                <a href="#" class="icons"><i class="fa-brands fa-twitter"></i></a>
+              </div>
+    
+              <div>
+                <label for="name" class="login__label">Full Name</label>
+                <input name="name" type="text" placeholder="Name" id="name" class="login__input">
+             </div>
+              <div>
+                 <label for="email" class="login__label">Email</label>
+                 <input name="email" type="email" placeholder="Email" id="email" class="login__input">
+              </div>
+              
+              
+              <div class="acc-typeContainer">
+                <label for="" class="login__label">Account Type</label>
+                <div class="acc-type">
+                  <div>
+                    <input type="radio" name="accountType" id="personal" value="Scout">
+                    <label for="personal">Scout</label>
+                  </div>
+                  <div>
+                    <input type="radio" name="accountType" id="business" value="Player">
+                    <label for="business">Player</label>
+                  </div>
+                  <div>
+                    <input type="radio" name="accountType" id="other" value="Team">
+                    <label for="other">Team</label>
+                  </div>
+      
+                </div>
+              </div>
+    
+              <div>
+                 <label for="password" class="login__label">Password</label>
+                 <input name="password" type="password" placeholder="Password" id="password" class="login__input">
+              </div>
+              <div>
+                <label for="password" class="login__label">Confirm</label>
+                <input name="confirmPassword" type="password" placeholder="Confirm Password" id="password" class="login__input">
+             </div>
+           </div>
+    
+           <div>
+              <p class="login__signup">
+                 Already have an account? <a href="#" onclick="alreadyHaveAnAccount()">Log In</a>
+              </p>
+    
+              <button type="submit" class="login__button">Sign Up</button>
+           </div>
+        </form>
+        <i class="ri-close-line login__close" id="registration-close" onclick="hideRegistration()"></i>
+     </div>
+  
+</body>
+</html>

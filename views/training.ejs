@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Training • <%= userName %></title>
+    <link rel="icon" type="image/png" href="/assets/favicon.ico">
+    <link rel="stylesheet" href="/feed/feed.css" />
+    <link rel="stylesheet" href="/feed/training.css">
+    <script src="/feed/navSearch.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://unicons.iconscout.com/release/v2.1.6/css/unicons.css"
+    />
+    <style>
+    .search-bar {
+        display: flex;
+        align-items: center;
+    }
+    .search-bar input[type="search"] {
+        flex: 1;
+        padding: 10px;
+        font-size: 16px;
+    }
+    .search-bar button {
+        padding: 10px;
+        cursor: pointer;
+    }
+    .usersFound {
+        margin-top: 20px;
+    }
+    .usersFound ul {
+        list-style: none;
+        padding: 0;
+    }
+    .usersFound li {
+        padding: 10px;
+        border-bottom: 1px solid #ccc;
+    }
+</style>
+<style>
+#myBtn {
+  display: none;
+  position: fixed;
+  bottom: 10px; /* Adjust vertical position */
+  right: 10px; /* Adjust horizontal position */
+  z-index: 99;
+  border: none;
+  outline: none;
+  background-color: rgba(0, 0, 0, 0.7); /* Dark background color */
+  color: white;
+  cursor: pointer;
+  padding: 8px 10px; /* Adjust padding */
+  border-radius: 5px; /* Rounded corners */
+  font-size: 20px;
+}
+
+/* Show the button when the user scrolls down */
+#myBtn.show {
+  display: block;
+}
+
+/* Hover effect */
+#myBtn:hover {
+  background-color: rgba(0, 0, 0, 0.9); /* Darker when hovered */
+}
+
+
+
+</style>
+  </head>
+  <body>
+    <!-- ....................NAVIGATION BAR......................... -->
+    <nav>
+      <div class="nav-container">
+        <h2 class="logo"><a href="/feed">Prospects</a></h2>
+        <div class="search-bar">
+          <div class="search-container">
+          <i class="uil uil-search searchIcon"></i>
+          <input type="search" placeholder="search" id="nav-search" oninput="searchNavUsers()"/>
+          </div>
+          <div id="searchResultsNav" class="list-group mt-2"></div>
+        </div>
+      </div>
+    </nav>
+    <main>
+      <div class="container">
+        <div class="left">
+          <!-- Side Bar -->
+          <div class="left">
+            <!-- Side Bar -->
+            <div class="profile">
+              <div class="profile-picture">
+                <img src="/uploads/<%= profilePicture %>" alt="Profile Picture">
+              </div>
+              <div class="handle">
+                <h4><a href="/profile/<%= user %>"><%= userName %></a></h4>
+                <p class="text-muted">@<%= accountType %></p>
+              </div>
+            </div>
+            <div class="sidebar">
+              <a href="/feed" class="menu-item active" id="home">
+                <span><i class="uil uil-home side-icon"></i></span>
+                <h3>Home</h3>
+              </a>
+              <a href="/explore" class="menu-item" id="explore">
+                <span><i class="uil uil-compass side-icon"></i></span>
+                <h3>Explore</h3>
+              </a>
+              <a href="/training" class="menu-item" id="training">
+                <span><i class="uil uil-football side-icon"></i></span>
+                <h3>Training</h3>
+              </a>
+              <a href="/analytics" class="menu-item" id="analytics">
+                <span><i class="uil uil-analytics side-icon"></i></span>
+                <h3>Analytics</h3>
+              </a>
+              <a class="menu-item" id="theme">
+                <span><i class="uil uil-palette side-icon"></i></span>
+                <h3>Theme</h3>
+              </a>
+              <a class="menu-item" id="create">
+                <span><i class="uil uil-plus-circle side-icon"></i></span>
+                <h3>Create</h3>
+              </a>
+              <br>
+              <br>
+              <br>
+              <br>
+              <br>
+              <br>
+              <br>
+              <br>
+              <br>
+              <br>
+              <br>
+              <br>
+              <a href="/logout" class="menu-item" id="settings">
+                <span><i class="uil uil-sign-out-alt side-icon"></i></span>
+                <h3>Log Out</h3>
+              </a>
+            </div>
+          </div>
+        </div>
+        <!-- END OF LEFT -->
+
+        <!-- MIDDLE -->
+        <div class="middle">
+          <div class="tc-container">
+            <h1 class="tc-heading">Training Hub In Partnership With Unisports</h1>
+            <br>
+            <div class="tc-series-options">
+                <button class="tc-series-option dribbling" onclick="showSeries('dribbling', 'PL5S5JSR4GpNjPjfxD6ErP1hBl_Cz49ZIS')"></button>
+                <button class="tc-series-option shooting" onclick="showSeries('shooting', 'PL5S5JSR4GpNj6Zxfg1UB0vw7p8P-amlhC')"></button>
+                <button class="tc-series-option passing" onclick="showSeries('passing', 'PL5S5JSR4GpNgnIzqPydOk7balinkKHAKf')"></button>
+                <button class="tc-series-option goalkeeping" onclick="showSeries('goalkeeping', 'PL5S5JSR4GpNgTNTamaBw8nMpx2XakPQK3')"></button>
+                <button class="tc-series-option defending" onclick="showSeries('defending', 'PL5S5JSR4GpNiC1elIdvr4RiPL3Uisxt28')"></button>
+                <button class="tc-series-option fitness" onclick="showSeries('fitness', 'PL5S5JSR4GpNj_WI4biYYgL6PNpQc5xflm')"></button>
+                <button class="tc-series-option tactical" onclick="showSeries('tactical', 'PL5S5JSR4GpNhwsDTzV8ybBSohNT4nE0Mr')"></button>
+                <button class="tc-series-option setPieces" onclick="showSeries('setPieces', 'PL5S5JSR4GpNi_akQzkBw6PdEKwtxHQ9Jf')"></button>
+                <button class="tc-series-option mindset" onclick="showSeries('mindset', 'PL5S5JSR4GpNjcwAvJVd3kUKfQx6_oj2Pp')"></button>
+                <!-- Add more series options as needed -->
+            </div>
+            <div id="tc-series" class="tc-series"
+                
+            </div>
+        </div>
+        
+
+        <div id="createPostModal" class="modal">
+          <div class="modal-content">
+              <span class="close">&times;</span>
+              <h2>Create Post</h2>
+              <form id="createPostForm">
+                  <textarea id="postContent" placeholder="What's on your mind?" required></textarea>
+                  <div class="image-preview" id="imagePreview">
+                      <img src="" alt="Image Preview" class="image-preview__image">
+                      <span class="image-preview__default-text">Image Preview</span>
+                  </div>
+                  <input type="file" id="postImage" accept="image/*">
+                  <!-- Call createPost() function on form submission -->
+                  <button class="post-button" onclick="createPost(event)" type="submit">Post</button>
+              </form>
+          </div>
+      </div>
+    
+        <script src="https://www.youtube.com/iframe_api"></script>
+        <script src="script.js"></script>
+        </div>
+
+        
+
+        </div>
+        <button onclick="topFunction()" id="myBtn" title="Go to top">&#8679;</button>
+
+      </main>
+      <!-- ............THEME CUSTOMIZATION -->
+      <div class="customize-theme" id="themeBlock">
+        <div class="card">
+          <h2>Customize Your View</h2>
+          <p>Manage your background.</p>
+          <div class="background">
+            <div class="choose-bg">
+              <div class="bg-1 active">
+                <span></span>
+                <h5>Light</h5>
+              </div>
+              <div class="bg-2">
+                <span></span>
+                <h5>Lights Out</h5>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <script src="/feed/feed.js"></script>
+      <script src="/feed/darkmode.js"></script>
+      <script>
+        async function searchUsers() {
+         const searchTerm = document.getElementById('searchBox').value;
+         const resultsContainer = document.getElementById('searchResults');
+         resultsContainer.innerHTML = ''; // Clear previous results
+     
+         if (searchTerm.length < 2) {
+           return; // Only search if the term is at least 2 characters long
+         }
+     
+         try {
+           const response = await fetch(`/api/search?q=${encodeURIComponent(searchTerm)}`);
+           const users = await response.json();
+     
+           if (users.length === 0) {
+             resultsContainer.innerHTML = '<p class="list-group-item">No users found</p>';
+           } else {
+             users.forEach(user => {
+               const userItem = document.createElement('a');
+               userItem.href = `/profile/${user._id}`;
+               userItem.classList.add('list-group-item', 'list-group-item-action');
+               
+               // Construct the image URL from '/uploads'
+               const profilePictureUrl = user.profilePicture ? `/uploads/${user.profilePicture}` : 'default-profile-pic-url';
+     
+               userItem.innerHTML = `
+                 <img src="${profilePictureUrl}" alt="${user.name}">
+                 <div class="user-info">
+                   <span class="user-name">${user.name}</span>
+                   <span class="user-email">${user.email}</span>
+                 </div>
+               `;
+     
+               resultsContainer.appendChild(userItem);
+             });
+           }
+         } catch (error) {
+           console.error('Error fetching users:', error);
+         }
+       }
+       </script>
+      <script>
+        function fetchPlaylist(playlistId, callback) {
+            var apiKey = 'AIzaSyD6sZXaH1xjJGOaafvzzk3S1VsZo8kd_JQ'; // Replace 'YOUR_API_KEY' with your actual YouTube Data API key
+            var apiUrl = `https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=50&playlistId=${playlistId}&key=${apiKey}`;
+
+            fetch(apiUrl)
+                .then(response => response.json())
+                .then(data => {
+                    var episodes = data.items.map(item => ({
+                        id: item.snippet.resourceId.videoId,
+                        title: item.snippet.title
+                    }));
+                    callback(episodes);
+                })
+                .catch(error => console.error('Error fetching playlist:', error));
+        }
+
+        function showSeries(seriesKey, playlistId) {
+            var seriesDiv = document.getElementById("tc-series");
+            seriesDiv.innerHTML = ""; // Clear existing series
+
+            fetchPlaylist(playlistId, function(episodes) {
+                episodes.forEach(function(episode) {
+                    var episodeDiv = document.createElement("div");
+                    episodeDiv.classList.add("tc-episode");
+
+                    var episodeTitle = document.createElement("h3");
+                    episodeTitle.textContent = episode.title;
+                    episodeTitle.classList.add("videoTitle")
+                    episodeDiv.appendChild(episodeTitle);
+
+                    var videoWrapper = document.createElement("div");
+                    videoWrapper.classList.add("tc-video-wrapper");
+
+                    var iframe = document
+                    var iframe = document.createElement("iframe");
+                    iframe.src = "https://www.youtube.com/embed/" + episode.id + "?enablejsapi=1";
+                    iframe.allow = "accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture";
+                    iframe.allowfullscreen = true;
+
+                    videoWrapper.appendChild(iframe);
+                    episodeDiv.appendChild(videoWrapper);
+
+                    seriesDiv.appendChild(episodeDiv);
+
+                    episodeDiv.addEventListener("click", function() {
+                        openModal(episode.id);
+                    });
+                });
+            });
+        }
+
+        function openModal(videoId) {
+            var modal = document.getElementById("tc-video-modal");
+            var videoPlayer = document.getElementById("tc-video-player");
+            modal.style.display = "block";
+            videoPlayer.innerHTML = '<iframe width="560" height="315" src="https://www.youtube.com/embed/' + videoId + '" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>';
+        }
+
+        function closeModal() {
+            var modal = document.getElementById("tc-video-modal");
+            var videoPlayer = document.getElementById("tc-video-player");
+            modal.style.display = "none";
+            videoPlayer.innerHTML = '';
+        }
+
+        document.querySelector(".tc-close").addEventListener("click", closeModal);
+        window.addEventListener("click", function(event) {
+            var modal = document.getElementById("tc-video-modal");
+            if (event.target == modal) {
+                closeModal();
+            }
+        });
+      </script>
+      <script>
+        // Get the button
+// Show/hide button based on scroll position
+window.onscroll = function() {
+  scrollFunction();
+};
+
+function scrollFunction() {
+  var btn = document.getElementById("myBtn");
+  if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+    btn.classList.add("show");
+  } else {
+    btn.classList.remove("show");
+  }
+}
+
+// Scroll to top when button is clicked
+function topFunction() {
+  document.body.scrollTop = 0;
+  document.documentElement.scrollTop = 0;
+}
+
+
+      </script>
+    </main>
+  </body>
+</html>
+

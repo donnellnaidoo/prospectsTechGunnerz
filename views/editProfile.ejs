@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Edit Profile • <%= userName %></title>
+  <link rel="stylesheet" href="/feed/feed.css" />
+  <link rel="icon" type="image/png" href="/assets/favicon.ico">
+  <link rel="stylesheet" href="https://unicons.iconscout.com/release/v2.1.6/css/unicons.css" />
+  <script src="/feed/navSearch.js"></script>
+  <!-- Include Select2 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+  <style>
+    .profile-header {
+      display: flex;
+    }
+    .profile-header > button {
+      width: 250px;
+    }
+    .profile-header > button:hover {
+      background-color: initial;
+    }
+    .preview-img {
+      max-width: 150px;
+      max-height: 150px;
+      margin-top: 10px;
+    }
+  </style>
+  <style>
+    .search-bar {
+        display: flex;
+        align-items: center;
+    }
+    .search-bar input[type="search"] {
+        flex: 1;
+        padding: 10px;
+        font-size: 16px;
+    }
+    .search-bar button {
+        padding: 10px;
+        cursor: pointer;
+    }
+    .usersFound {
+        margin-top: 20px;
+    }
+    .usersFound ul {
+        list-style: none;
+        padding: 0;
+    }
+    .usersFound li {
+        padding: 10px;
+        border-bottom: 1px solid #ccc;
+    }
+</style>
+</head>
+<body>
+  <!-- ....................NAVIGATION BAR......................... -->
+  <nav>
+    <div class="nav-container">
+      <h2 class="logo"><a href="/feed">Prospects</a></h2>
+      <div class="search-bar">
+        <div class="search-container">
+        <i class="uil uil-search searchIcon"></i>
+        <input type="search" placeholder="search" id="nav-search" oninput="searchNavUsers()"/>
+        </div>
+        <div id="searchResultsNav" class="list-group mt-2"></div>
+      </div>
+    </div>
+  </nav>
+  <main>
+    <div class="container">
+      <div class="left">
+        <!-- Side Bar -->
+        <div class="profile">
+          <div class="profile-picture profilePiconPP">
+            <img src="/uploads/<%= profilePicture %>" alt="Profile Picture">
+          </div>
+          <div class="handle">
+            <h4><a href="/profile/<%= user %>"><%= userName %></a></h4>
+            <p class="text-muted">@<%= accountType %></p>
+          </div>
+        </div>
+        <div class="sidebar">
+          <a href="/feed" class="menu-item active" id="home">
+            <span><i class="uil uil-home side-icon"></i></span>
+            <h3>Home</h3>
+          </a>
+          <a href="/explore" class="menu-item" id="explore">
+            <span><i class="uil uil-compass side-icon"></i></span>
+            <h3>Explore</h3>
+          </a>
+          <a href="/training" class="menu-item" id="training">
+            <span><i class="uil uil-football side-icon"></i></span>
+            <h3>Training</h3>
+          </a>
+          <a href="/analytics" class="menu-item" id="analytics">
+            <span><i class="uil uil-analytics side-icon"></i></span>
+            <h3>Analytics</h3>
+          </a>
+          <a class="menu-item" id="theme">
+            <span><i class="uil uil-palette side-icon"></i></span>
+            <h3>Theme</h3>
+          </a>
+          <a class="menu-item" id="create">
+            <span><i class="uil uil-plus-circle side-icon"></i></span>
+            <h3>Create</h3>
+          </a>
+          <br><br><br><br><br><br><br><br><br><br><br><br>
+          <a href="/" class="menu-item" id="settings">
+            <span><i class="uil uil-sign-out-alt side-icon"></i></span>
+            <h3>Log Out</h3>
+          </a>
+        </div>
+      </div>
+      <!-- END OF LEFT -->
+
+      <!-- MIDDLE -->
+      <div class="middle">
+        <div class="edit-profile-container">
+          <div class="edit-profile-header">
+            <h1>Edit Profile</h1>
+          </div>
+          <form class="edit-profile-form" action="/profile/edit" method="POST" enctype="multipart/form-data">
+            <input type="text" name="name" value="<%= user.name %>" placeholder="Name" required>
+            <input type="email" name="email" value="<%= user.email %>" placeholder="Email" required>
+            <textarea name="bio" placeholder="Bio"><%= user.bio %></textarea>
+
+            <!-- Country Dropdown -->
+            <select name="country" class="select2 selectOptions" required>
+              <option value="" disabled>Select your country</option>
+              <option value="Algeria" <%= user.country === 'Algeria' ? 'selected' : '' %>>Algeria</option>
+              <option value="Angola" <%= user.country === 'Angola' ? 'selected' : '' %>>Angola</option>
+              <option value="Egypt" <%= user.country === 'Egypt' ? 'selected' : '' %>>Egypt</option>
+              <option value="Ghana" <%= user.country === 'Ghana' ? 'selected' : '' %>>Ghana</option>
+              <option value="Kenya" <%= user.country === 'Kenya' ? 'selected' : '' %>>Kenya</option>
+              <option value="Morocco" <%= user.country === 'Morocco' ? 'selected' : '' %>>Morocco</option>
+              <option value="Nigeria" <%= user.country === 'Nigeria' ? 'selected' : '' %>>Nigeria</option>
+              <option value="South Africa" <%= user.country === 'South Africa' ? 'selected' : '' %>>South Africa</option>
+              <option value="Tanzania" <%= user.country === 'Tanzania' ? 'selected' : '' %>>Tanzania</option>
+              <option value="Uganda" <%= user.country === 'Uganda' ? 'selected' : '' %>>Uganda</option>
+
+              <!-- Add more countries as needed -->
+            </select>
+
+            <input type="text" name="phoneNumber" value="<%= user.phoneNumber %>" placeholder="Phone Number">
+            <input type="text" name="hometown" value="<%= user.hometown %>" placeholder="Hometown">
+            <input type="text" name="achievements" value="<%= user.achievements %>" placeholder="Achievements">
+
+            <!-- Position Dropdown -->
+            <select name="position" class="select2 selectOptions" required>
+              <option value="" disabled>Select your position</option>
+              <option value="Goalkeeper" <%= user.position === 'Goalkeeper' ? 'selected' : '' %>>Goalkeeper</option>
+              <option value="Defender" <%= user.position === 'Defender' ? 'selected' : '' %>>Defender</option>
+              <option value="Midfielder" <%= user.position === 'Midfielder' ? 'selected' : '' %>>Midfielder</option>
+              <option value="Forward" <%= user.position === 'Forward' ? 'selected' : '' %>>Forward</option>
+              <!-- Add more positions as needed -->
+            </select>
+
+            <!-- Current Profile Picture and Image Preview -->
+            <div>
+              <label for="profilePicture">Profile Picture</label><br>
+              <img id="currentProfilePicture" src="/uploads/<%= user.profilePicture %>" alt="Current Profile Picture" class="preview-img"><br>
+              <input type="file" name="profilePicture" accept="image/*" onchange="previewImage(event)">
+              <img id="newProfilePicture" class="preview-img" style="display: none;">
+            </div>
+
+            <button type="submit">Update Profile</button>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div id="myModal" class="modal">
+      <span class="close">&times;</span>
+      <img class="modal-content" id="img01">
+    </div>
+  </main>
+  <!-- ............THEME CUSTOMIZATION -->
+  <div class="customize-theme" id="themeBlock">
+    <div class="card">
+      <h2>Customize Your View</h2>
+      <p>Manage your background.</p>
+      <div class="background">
+        <div class="choose-bg">
+          <div class="bg-1 active">
+            <span></span>
+            <h5>Light</h5>
+          </div>
+          <div class="bg-2">
+            <span></span>
+            <h5>Lights Out</h5>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="/feed/feed.js"></script>
+  <script src="/feed/darkmode.js"></script>
+  <!-- Include Select2 JS -->
+  <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+  <script>
+    async function searchUsers() {
+     const searchTerm = document.getElementById('searchBox').value;
+     const resultsContainer = document.getElementById('searchResults');
+     resultsContainer.innerHTML = ''; // Clear previous results
+ 
+     if (searchTerm.length < 2) {
+       return; // Only search if the term is at least 2 characters long
+     }
+ 
+     try {
+       const response = await fetch(`/api/search?q=${encodeURIComponent(searchTerm)}`);
+       const users = await response.json();
+ 
+       if (users.length === 0) {
+         resultsContainer.innerHTML = '<p class="list-group-item">No users found</p>';
+       } else {
+         users.forEach(user => {
+           const userItem = document.createElement('a');
+           userItem.href = `/profile/${user._id}`;
+           userItem.classList.add('list-group-item', 'list-group-item-action');
+           
+           // Construct the image URL from '/uploads'
+           const profilePictureUrl = user.profilePicture ? `/uploads/${user.profilePicture}` : 'default-profile-pic-url';
+ 
+           userItem.innerHTML = `
+             <img src="${profilePictureUrl}" alt="${user.name}">
+             <div class="user-info">
+               <span class="user-name">${user.name}</span>
+               <span class="user-email">${user.email}</span>
+             </div>
+           `;
+ 
+           resultsContainer.appendChild(userItem);
+         });
+       }
+     } catch (error) {
+       console.error('Error fetching users:', error);
+     }
+   }
+   </script>
+  <script>
+    $(document).ready(function() {
+      $('.select2').select2();
+    });
+
+    function previewImage(event) {
+      var reader = new FileReader();
+      reader.onload = function(){
+        var output = document.getElementById('newProfilePicture');
+        output.src = reader.result;
+        output.style.display = 'block';
+      };
+      reader.readAsDataURL(event.target.files[0]);
+    }
+  </script>
+</body>
+</html>
