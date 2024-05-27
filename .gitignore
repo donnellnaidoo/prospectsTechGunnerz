@@ -1,0 +1,54 @@
+# Ignore Node.js modules
+node_modules/
+
+# Ignore uploaded files
+public/uploads/
+
+# Ignore compiled code
+*.log
+*.tsbuildinfo
+
+# Ignore system-specific files
+.DS_Store
+Thumbs.db
+
+# Ignore environment-specific files
+.env
+.env.*
+
+# Ignore IDE and editor files
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+
+# Ignore npm debug log
+npm-debug.log*
+
+# Ignore dependency directories
+.jake/
+pids/
+logs/
+logs/
+build/
+bin/
+coverage/
+lib-cov/
+*.seed
+*.log
+*.csv
+
+# Ignore compiled binary addons (Node.js)
+*.o
+*.a
+*.os
+
+# Ignore Electron-rebuild directory
+node_modules/.bin
+node_modules/.cache
+
+# Ignore node-gyp configuration
+.node-gyp/
+
+# Ignore Jupyter Notebook checkpoints
+.ipynb_checkpoints/
