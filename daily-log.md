@@ -11,3 +11,6 @@ Log entry for 2026-01-03
 
 ## 2026-01-04 (Sunday)
 Log entry for 2026-01-04
+
+## 2026-01-05 (Monday)
+Log entry for 2026-01-05
