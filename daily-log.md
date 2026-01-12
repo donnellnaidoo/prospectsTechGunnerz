@@ -32,3 +32,6 @@ Log entry for 2026-01-10
 
 ## 2026-01-11 (Sunday)
 Log entry for 2026-01-11
+
+## 2026-01-12 (Monday)
+Log entry for 2026-01-12
